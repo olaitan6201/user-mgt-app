@@ -4,7 +4,8 @@ import Filter from "./Filter.svelte";
 import NewUser from "./NewUser.svelte";
 import { createUser, removeUser, users } from '../store'
 import { tweened } from 'svelte/motion'
-import { cubicIn } from "svelte/easing";
+import { cubicIn, quintOut } from "svelte/easing";
+import { flip } from "svelte/animate";
 import { onMount } from "svelte";
     
     $: filteredUsers = $users;
@@ -39,7 +40,9 @@ import { onMount } from "svelte";
 
     
     {#each filteredUsers as user, i (user.id)}
-    <User {user} id={i+1} on:remove={removeUser}/>
+    <div animate:flip={{ delay: 250, duration: 1000, easing: quintOut}}>
+        <User {user} id={i+1} on:remove={removeUser} />
+    </div>
     {:else}
     <p>No user found !</p>
     {/each}
