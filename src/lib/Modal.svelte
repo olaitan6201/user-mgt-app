@@ -4,6 +4,8 @@
 
     const dispatch = createEventDispatcher()
     const closeModal = () => dispatch('close');
+
+    const handleSubmit = () => dispatch('submit')
 </script>
 
 <div 
@@ -16,7 +18,7 @@
         <div class="fixed z-10 inset-0 overflow-y-auto">
             <div class="flex items-center sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
                 <div class="relative bg-white rounded-lg px-4 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-sm sm:w-full sm:p-6">
-                    <form class="mt-5 sm:mt-6">
+                    <form class="mt-5 sm:mt-6" on:submit|preventDefault={handleSubmit}>
                         <slot></slot>
 
                         <div class="flex justify-between">

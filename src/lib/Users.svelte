@@ -52,6 +52,20 @@ import NewUser from "./NewUser.svelte";
 
         return users = users.filter(user => user.id !== id)
     }
+
+    
+    const createUser = e => {
+        const rndInt = Math.floor(Math.random() * 3) + 1
+        const newUser = {
+            id: +users.length+1, 
+            image: eval(`user${rndInt}`),
+            ...e.detail
+        }
+
+        users.push(newUser);
+
+        filteredUsers = users;
+    }
 </script>
 
 <div>
@@ -59,7 +73,7 @@ import NewUser from "./NewUser.svelte";
     
     <div class="flex justify-between mx-4 items-center">
         <Filter on:filter={filterUsers} />
-        <NewUser />
+        <NewUser on:create={createUser} />
     </div>
     
     {#each filteredUsers as user, i (user.id)}
