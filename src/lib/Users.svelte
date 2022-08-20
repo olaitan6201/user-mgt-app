@@ -6,65 +6,15 @@ import user3 from "../assets/images/user3.png"
 import userHack from "../assets/images/user-hack.png"
 import Filter from "./Filter.svelte";
 import NewUser from "./NewUser.svelte";
-
-    let users = [
-        {
-            id: 1,
-            image: user1,
-            name: "Me",
-            email: "Me@mail.com",
-            active: true
-        },
-        {
-            id: 2,
-            image: user2, 
-            name: "Jeni",
-            email: "Jeni@mail.com",
-            active: false
-        },
-        {
-            id: 3,
-            image: user3,
-            name: "John",
-            email: "John@mail.com",
-            active: false
-        },
-        {
-            id: 4,
-            image: userHack,
-            name: "Hacker",
-            email: "Hacker@mail.com",
-            active: true
-        }
-    ]
+import { createUser, removeUser, users } from '../store'
     
-    $: filteredUsers = users;
+    $: filteredUsers = $users;
 
     const filterUsers = e => {
         const status = e.detail
-        if(status === 'all') return filteredUsers = users;
+        if(status === 'all') return filteredUsers = $users;
         const active = status === 'active';
-        filteredUsers = users.filter((user) => user.active === active);
-    }
-
-    const removeUser = e => {
-        const id = e.detail
-
-        return users = users.filter(user => user.id !== id)
-    }
-
-    
-    const createUser = e => {
-        const rndInt = Math.floor(Math.random() * 3) + 1
-        const newUser = {
-            id: +users.length+1, 
-            image: eval(`user${rndInt}`),
-            ...e.detail
-        }
-
-        users.push(newUser);
-
-        filteredUsers = users;
+        filteredUsers = $users.filter((user) => user.active === active);
     }
 </script>
 

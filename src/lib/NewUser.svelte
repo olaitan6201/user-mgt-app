@@ -2,7 +2,7 @@
 import { createEventDispatcher } from "svelte";
 
 import Modal from "./Modal.svelte";
-let showModal = true;
+let showModal = false;
 
 const dispatch = createEventDispatcher();
 
