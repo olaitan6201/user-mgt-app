@@ -8,7 +8,7 @@
     }
 </script>
 
-<div class="ml-4 mt-4">
+<div class="mt-4">
     <label for="user-filter">Filter User</label>
     <select 
         name="user-filter" id="user-filter" 
