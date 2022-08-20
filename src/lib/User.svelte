@@ -31,7 +31,7 @@ import { fade, fly } from "svelte/transition";
     >X</span>
     <span class="w-10">{id}</span>
     <img src={image} alt={name} class="rounded-full w-10 h-10"/>
-    <p class="mx-4 w-20">{name} {user.id}</p>
+    <p class="mx-4 w-20">{name}</p>
     <p class="mx-4 w-20">{email}</p>
 </div>
 {/if}
