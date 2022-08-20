@@ -43,11 +43,11 @@ export const removeUser = ({detail}) => {
 export const createUser = ({detail}) => {
     const rndInt = Math.floor(Math.random() * 3) + 1
     users.update(_users => [
+        ..._users,
         {
-            id: +_users.length+1, 
+            id: +_users[_users.length-1].id+1, 
             image: eval(`user${rndInt}`),
             ...detail
-        }, 
-        ..._users
+        }
     ])
 }
