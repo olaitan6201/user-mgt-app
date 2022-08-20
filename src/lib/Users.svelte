@@ -39,7 +39,7 @@ import { onMount } from "svelte";
 
     
     {#each filteredUsers as user, i (user.id)}
-    <User {user} on:remove={removeUser}/>
+    <User {user} id={i+1} on:remove={removeUser}/>
     {:else}
     <p>No user found !</p>
     {/each}

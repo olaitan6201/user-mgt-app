@@ -1,9 +1,11 @@
 <script>
 import { createEventDispatcher } from "svelte";
+import { fade, fly } from "svelte/transition";
 
 
     export let user;
-    const { id, image, name, email } = user;
+    export let id
+    const { image, name, email } = user;
     const dispatch = createEventDispatcher();
     const removeUser = (id) => {
         dispatch('remove', id)
@@ -12,6 +14,7 @@ import { createEventDispatcher } from "svelte";
 
 {#if user}
 <div 
+    transition:fly={{duration: 1000, x: 200}}
     class="
         flex m-5 bg-white border p-2 rounded-lg 
         shadow-md hover:shadow-lg cursor-pointer 
@@ -28,7 +31,7 @@ import { createEventDispatcher } from "svelte";
     >X</span>
     <span class="w-10">{id}</span>
     <img src={image} alt={name} class="rounded-full w-10 h-10"/>
-    <p class="mx-4 w-20">{name}</p>
+    <p class="mx-4 w-20">{name} {user.id}</p>
     <p class="mx-4 w-20">{email}</p>
 </div>
 {/if}
